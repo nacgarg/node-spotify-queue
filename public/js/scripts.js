@@ -99,7 +99,7 @@ setInterval(function() {
     refresh();
 }, 1000);
 
-$('#song-search').keyup(function() {
+$('#song-search').keydown(function() {
     var value = document.getElementById('song-search').value;
     console.log(value)
     songSearch(value);
