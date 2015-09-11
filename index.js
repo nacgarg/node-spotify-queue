@@ -2,10 +2,10 @@ var app = require('express')();
 var express = require('express')
 var sp = require('libspotify');
 var cred = require('./spotify_key/passwd');
-var io = require('socket.io')(app.listen(80));
+app.listen(8000);
 var BinaryServer = require('binaryjs').BinaryServer;
 var server = BinaryServer({port: 9000});
-var Speaker = require('speaker');
+//var Speaker = require('speaker');
 var session = new sp.Session({
     applicationKey: __dirname + '/./spotify_key/spotify_appkey.key'
 });
@@ -15,7 +15,7 @@ var queue = []
 app.use(express.static('public'));
 
 global.player = session.getPlayer();
-global.speaker = new Speaker();
+//global.speaker = new Speaker();
 session.login(cred.login, cred.password);
 session.once('login', function(err) {
     if (err) this.emit('error', err);
@@ -29,7 +29,7 @@ var playTrack = function(track, callback) {
 
         player.load(track);
         player.play();
-        player.pipe(speaker);
+        //player.pipe(speaker);
 
         player.once('track-end', function() {
             callback()
@@ -58,8 +58,8 @@ var nowPlayingID="cat";
 var playNext = function() {
     if (playing && queue.length > 0) {
         player.stop();
-        speaker.close();
-        global.speaker = new Speaker();
+        //speaker.close();
+        //global.speaker = new Speaker();
         nowPlayingID=queue[0];
         playTrack("spotify:track:" + queue[0], function() {
             nowPlayingID="cat";
