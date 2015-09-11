@@ -114,7 +114,7 @@ app.get('/stop', function(req, res) {
 
 app.get('/queue/add', function(req, res) {
     queue.push(req.query.id);
-    if(queue.length===1){
+    if(queue.length===1 && nowPlayingID==="cat"){
         playNext();
     }
     res.send('done');
