@@ -42,9 +42,11 @@ var refreshQueue = function() {
         $.ajax({
                     url: "https://api.spotify.com/v1/tracks/" + i
                 }).done(function(x) {
-                    var html= generateQueueHtml(x.name, x.artists.map(function(v) {
+                    var artist=x.artists.map(function(v) {
                         return v.name
-                    }).join(", "), x.album.images[0].url, nowplaying)
+                    }).join(", ");
+                    var html='<li class="collection-item avatar"><img src="' + x.album.images[0].url + '" alt="n/a" class="circle"><span class="title">' + x.name + '</span><p>' + artist + '</p></li>';
+                   
                     console.log("now playing" + html);
                 });
     });
