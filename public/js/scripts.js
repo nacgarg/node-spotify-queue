@@ -46,7 +46,7 @@ var refreshQueue = function() {
                         return v.name
                     }).join(", ");
                     var html='<li class="collection-item avatar"><img src="' + x.album.images[0].url + '" alt="n/a" class="circle"><span class="title">' + x.name + '</span><p>' + artist + '</p></li>';
-                   
+                   $("#playingContainer").html(html);
                     console.log("now playing" + html);
                 });
     });
