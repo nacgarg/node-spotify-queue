@@ -107,6 +107,9 @@ app.get('/stop', function(req, res) {
 
 app.get('/queue/add', function(req, res) {
     queue.push(req.query.id);
+    if(queue.length===1){
+        playNext();
+    }
     res.send('done');
 });
 
