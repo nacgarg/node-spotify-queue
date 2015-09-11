@@ -39,6 +39,9 @@ var refreshQueue = function() {
     $.ajax({url:"/nowplaying"}).done(function(i){
         console.log("now playing: "+i);
         window.nowplaying=i;
+        if(i==="cat"){
+            $("#playingContainer").html("NOTHING IS PLAYINGGGGGG");
+        }else{
         $.ajax({
                     url: "https://api.spotify.com/v1/tracks/" + i
                 }).done(function(x) {
@@ -49,6 +52,7 @@ var refreshQueue = function() {
                    $("#playingContainer").html(html);
                     console.log("now playing" + html);
                 });
+        }
     });
 }
 
