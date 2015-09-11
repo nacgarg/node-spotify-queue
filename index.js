@@ -52,19 +52,26 @@ var search = function(query, callback) {
     });
 }
 
-var playing = true
+var playing = true;
+var nowPlayingID="cat";
 
 var playNext = function() {
     if (playing && queue.length > 0) {
         player.stop();
-        speaker.close()
+        speaker.close();
         global.speaker = new Speaker();
+        nowPlayingID=queue[0];
         playTrack("spotify:track:" + queue[0], function() {
+            nowPlayingID="cat";
             playNext();
         });
-        queue.splice(0, 1)
+        queue.splice(0, 1);
     }
 }
+
+app.get("/nowplaying",function(req,res){
+    res.send(nowPlayingID);
+});
 
 app.get("/", function(req, res) {
     res.sendFile("index.html", {
