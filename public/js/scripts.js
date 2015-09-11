@@ -38,13 +38,14 @@ var refreshQueue = function() {
     });
     $.ajax({url:"/nowplaying"}).done(function(i){
         console.log("now playing: "+i);
+        window.nowplaying=i;
         $.ajax({
                     url: "https://api.spotify.com/v1/tracks/" + i
                 }).done(function(x) {
                     var html= generateQueueHtml(x.name, x.artists.map(function(v) {
                         return v.name
-                    }).join(", "), x.album.images[0].url, thing)
-                    console.log(html);
+                    }).join(", "), x.album.images[0].url, nowplaying)
+                    console.log("now playing" + html);
                 });
     });
 }
