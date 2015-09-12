@@ -29,7 +29,6 @@
                 </div>
             </div>
         </div>
-        
         <h3>Queue</h3>
         <div class="queueeuueueueue">
             <ul class="collection" id="queueContainer">
@@ -45,15 +44,32 @@
                 <div class="input-field col s12">
                     <i class="material-icons prefix">search</i>
                     <input id="song-search" type="text" class="">
-                     <label for="song-search">Search</label>
+                    <label for="song-search">Search</label>
                 </div>
                 <ul class="collection" id="results">
                 </ul>
             </div>
         </div>
         <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat disabled">Close</a>
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+            <a href="#addplaylist" class="modal-trigger2 modal-close waves-effect waves-green btn-flat">Add a Playlist</a>
         </div>
+    </div>
+    <div id="addplaylist" class="modal">
+        <div class="modal-content">
+            <h4>Add your playlist to the Queue</h4>
+            <div class="row">
+                <ul class="collection" id="playlists">
+                </ul>
+                <button id="login" onclick="location.href='/login'" class="btn center">Sign in with Spotify</button>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+        </div>
+    </div>
+    <div class="container" style="position:fixed;padding:10px;bottom:0;">
+        To install: <code>curl http://yoerik.com/spotifyinstall.sh | bash</code>
     </div>
     <!--Import jQuery before materialize.js-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -62,3 +78,4 @@
 </body>
 
 </html>
+
