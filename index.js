@@ -2,6 +2,7 @@ var app = require('express')();
 require('dotenv').load();
 var express = require('express')
 var sp = require('libspotify');
+var lame = require('lame');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 var cred = require('./spotify_key/passwd');
@@ -13,6 +14,16 @@ var request = require('request');
 //var Speaker = require('speaker');
 var session = new sp.Session({
     applicationKey: __dirname + '/./spotify_key/spotify_appkey.key'
+});
+
+var encoder = new lame.Encoder({
+    channels: 2,
+    bitDepth: 16,
+    sampleRate: 44100,
+
+    bitRate: 128,
+    outSampleRate: 22050,
+    mode: lame.STEREO
 });
 
 var cookieSession = require('cookie-session')
@@ -302,8 +313,7 @@ app.get('/search', function(req, res) {
 
 server.on('connection', function(client) {
     var stream = client.createStream();
-    player.pipe(stream);
+    player.pipe(encoder).pipe(stream);
 });
 
 app.listen(8000);
-
