@@ -20,7 +20,6 @@ var encoder = new lame.Encoder({
     channels: 2,
     bitDepth: 16,
     sampleRate: 44100,
-
     bitRate: 128,
     outSampleRate: 22050,
     mode: lame.STEREO
@@ -313,7 +312,7 @@ app.get('/search', function(req, res) {
 
 server.on('connection', function(client) {
     var stream = client.createStream();
-    player.pipe(encoder).pipe(stream);
+    player.pipe(stream);
 });
 
 app.listen(8000);

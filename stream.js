@@ -12,5 +12,5 @@ var decoder = new lame.Decoder({
 var client = new binaryjs.BinaryClient('ws://' + (process.argv[2]) + ':9000');
 
 client.on('stream', function(stream, meta) {
-    stream.pipe(decoder).pipe(speaker)
+    stream.pipe(speaker);
 });

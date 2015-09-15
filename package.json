@@ -10,13 +10,14 @@
   "license": "BSD-2-Clause",
   "dependencies": {
     "binaryjs": "~0.2.1",
-    "express": "*",
-    "speaker": "*",
-    "socket.io": "*",
-    "libspotify": "*",
     "cookie-parser": "~1.3.5",
-    "request": "~2.61.0",
+    "dotenv": "~1.2.0",
+    "express": "*",
     "express-session": "~1.11.3",
-    "dotenv": "~1.2.0"
+    "lame": "^1.2.3",
+    "libspotify": "*",
+    "request": "~2.61.0",
+    "socket.io": "*",
+    "speaker": "*"
   }
 }
